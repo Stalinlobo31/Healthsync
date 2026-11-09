@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthSync — Your health, connected.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="login" class="login-shell">
+  <div class="login-left">
+    <div class="brand"><span class="brand-mark">✚</span> HealthSync</div>
+    <div class="hero-copy">
+      <div class="eyebrow">CONNECTED HEALTH INTELLIGENCE</div>
+      <h1>Your health,<br><span>connected.</span></h1>
+      <p>Bring reports, history, trends and clinical context into one secure workspace — designed with human review at the center.</p>
+      <div class="hero-points">
+        <div><b>01</b><span>One chronological health record</span></div>
+        <div><b>02</b><span>Evidence-aware analysis</span></div>
+        <div><b>03</b><span>Role-based access & audit trails</span></div>
+      </div>
+    </div>
+    <div class="login-foot">Prototype • Synthetic data only</div>
+  </div>
+  <div class="login-right">
+    <div class="login-card">
+      <div class="mobile-brand"><div class="brand"><span class="brand-mark">✚</span> HealthSync</div></div>
+      <div class="eyebrow">SECURE WORKSPACE</div>
+      <h2>Welcome back.</h2>
+      <p class="muted">Choose a demo role to explore the HealthSync experience.</p>
+      <label>Email</label>
+      <input
+        type="email"
+        id="emailInput"
+        placeholder="Enter your email"
+        autocomplete="email"
+      />
+
+      <label>Password</label>
+      <input
+        type="password"
+        id="passwordInput"
+        placeholder="Enter your password"
+        autocomplete="current-password"
+      />
+
+      <button class="primary full" onclick="loginUser()">
+        Sign in to HealthSync <span>→</span>
+      </button>
+      <button class="secondary full" onclick="showSignup()">
+        Create a demo account
+      </button>
+      <div id="signupPanel" class="hidden">
+        <label>Full name</label>
+        <input
+          type="text"
+          id="signupName"
+          placeholder="Enter your name"
+          autocomplete="name"
+        />
+
+        <label>Email</label>
+        <input
+          type="email"
+          id="signupEmail"
+          placeholder="Enter your email"
+          autocomplete="email"
+        />
+
+        <label>Password</label>
+        <input
+          type="password"
+          id="signupPassword"
+          placeholder="Create a password"
+          autocomplete="new-password"
+        />
+        <label>Account type</label>
+        <select id="signupRole">
+          <option value="patient">Patient</option>
+          <option value="doctor">Doctor</option>
+          <option value="clinic">Clinic</option>
+          <option value="admin">Administrator</option>
+        </select>
+
+        <button class="primary full" onclick="signupUser()">
+          Create account <span>→</span>
+        </button>
+
+        <button class="secondary full" onclick="showLogin()">
+          Back to sign in
+        </button>
+
+        <div id="signupError" class="notice danger-box hidden"></div>
+      </div>
+
+      <div id="loginError" class="notice danger-box hidden"></div>
+
+      <div class="security-note">
+        <span>✓</span> Secure authentication • Synthetic demo data
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="app" class="app hidden">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">✚</span> HealthSync</div>
+    <div class="role-pill" id="sideRole"></div>
+    <nav id="nav"></nav>
+    <div class="side-bottom">
+      <div class="privacy-mini"><span>🔒</span><div><b>Privacy first</b><small>Access is role-scoped</small></div></div>
+      <button class="logout" onclick="logout()">↩ Sign out</button>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div><button class="mobile-menu" onclick="toggleSidebar()">☰</button><div><span class="page-kicker">HEALTHSYNC</span><h3 id="pageTitle">Overview</h3></div></div>
+      <div class="top-actions"><button class="icon-btn">⌕</button><div class="user-chip"><span class="avatar" id="avatar">A</span><span id="userLabel">Patient</span></div></div>
+    </header>
+    <div id="content"></div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
